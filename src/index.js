@@ -79,3 +79,15 @@ function deleteQuote(quote){
     console.log(likeNumber)
     likeNumber++
     likeButton.querySelector("span").textContent = likeNumber
+    //creates a likeObject to be added to the server
+    likeObject = {}
+    likeObject["quoteId"] = singleQuote["id"]
+    likeObject["createdAt"] = Date.now()
+    console.log(likeObject)
+    //adds a like object with a quoteId of the quote to the server
+    fetch("http://localhost:3000/likes",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(likeObject)
+    })
+    })
