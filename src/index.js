@@ -91,3 +91,10 @@ function deleteQuote(quote){
       body:JSON.stringify(likeObject)
     })
     })
+    //makes the number of likes persistent by fetching them from the server
+    fetch(`http://localhost:3000/likes?quoteId=${singleQuote["id"]}`)
+    .then(response => response.json())
+    .then(data => 
+    likeButton.querySelector("span").textContent = data.length + 1)
+    }
+    
