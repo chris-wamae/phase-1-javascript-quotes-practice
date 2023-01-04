@@ -68,3 +68,14 @@ function deleteQuote(quote){
    renderQuotes()
    })
   }
+
+  function likeQuote(singleQuote){
+    //adds event listener to the like buttons
+    let likeButton = document.querySelector("ul#quote-list").lastChild.querySelector("button.btn-success");
+    console.log(likeButton)
+    likeButton.addEventListener("click",function(){
+    //increases the number of likes by one when the button is clicked
+    let likeNumber = parseInt(likeButton.querySelector("span").textContent)
+    console.log(likeNumber)
+    likeNumber++
+    likeButton.querySelector("span").textContent = likeNumber
