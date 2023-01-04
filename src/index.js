@@ -25,3 +25,16 @@ function renderQuotes() {
     });
 }
 renderQuotes();
+
+function addQuote(){
+//listens for a submission of the form
+document.querySelector("form#new-quote-form").addEventListener("submit",function(event){
+  //prevents the form from refreshing the page
+event.preventDefault()
+//get the data that is entered when the form is submitted
+let newQuote = document.querySelector("input#new-quote").value
+let quoteAuthor = document.querySelector("input#author").value
+})
+// Submitting the form creates a new quote and adds it to the list of quotes without 
+// having to refresh the page. Pessimistic rendering is recommended.
+} addQuote()
