@@ -20,8 +20,10 @@ function renderQuotes() {
             </blockquote>`;
             console.log(singleQuote)
         document.querySelector("ul#quote-list").append(quote)
-
+        deleteQuote(singleQuote)
+        likeQuote(singleQuote)
       })
+    
     });
 }
 renderQuotes();
@@ -51,4 +53,18 @@ fetch("http://localhost:3000/quotes",{
 renderQuotes()
 })
 }addQuote()
-
+function deleteQuote(quote){
+  //adds an event listener to the delete buttons
+  document.querySelector("ul#quote-list")
+  .lastChild
+  .querySelector("button.btn-danger")
+  .addEventListener("click",function(){
+  //sends a fetch DELETE request removing the specific quote from the API through its ID
+   fetch(`http://localhost:3000/quotes/${quote["id"]}`,{
+     method:"DELETE",
+     headers:{"Content-Type":"application/json"}
+   })
+  //renders the quotes minus the deleted one
+   renderQuotes()
+   })
+  }
